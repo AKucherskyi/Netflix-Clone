@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -29,6 +29,25 @@ const login = (email, password) => {
   });
   };
 
+  const createUser = (name, email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    db.collection("users").add({
+      uid: user.uid,
+      name,
+      authProvider: "local",
+      email,
+    });
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+}
+
   // const registerWithEmailAndPassword = async (name, email, password) => {
   //   try {
   //     const res = await auth.createUserWithEmailAndPassword(email, password);
@@ -55,5 +74,6 @@ const login = (email, password) => {
     auth,
     db,
     login,
-    logout
+    logout,
+    createUser
   };
