@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import {
   auth,
   createUser,
-} from "./firebase";
+} from "../firebase";
 import "./Register.css";
 
 function Register() {

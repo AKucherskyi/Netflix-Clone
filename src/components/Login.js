@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
-import { auth, login } from "./firebase.js";
+import { auth, login } from "../firebase.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -18,7 +18,9 @@ function Login() {
   }, [user, loading]);
   return (
     <div className="login">
+      
       <div className="login__container">
+      <h1>Login</h1> 
         <input
           type="text"
           className="login__textBox"
@@ -40,9 +42,6 @@ function Login() {
           Login
         </button>
 
-        <div>
-          <Link to="/reset">Forgot Password</Link>
-        </div>
         <div>
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>

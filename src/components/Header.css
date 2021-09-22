@@ -1,0 +1,62 @@
+.dashboard {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dashboard__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #dcdcdc;
+    padding: 30px;
+  }
+
+.logout {
+    width: 15%;
+    display: flex;
+    color: antiquewhite;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+  .logout__btn {
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    background-color: #e50914
+  }
+
+  .logout__btn:hover {
+    background-color: #d34148
+  }
+  
+  .dashboard div {
+    margin-top: 7px;
+  }
+
+  .header {
+      height: 100px;
+      background-color: #0f0c0c;
+      display: flex;
+      align-items: center;
+  }
+
+  .logo {
+      height: 50px;
+  }
+
+  .container {
+      width: 85%;
+      margin: 0 auto;
+  }
+
+  .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }

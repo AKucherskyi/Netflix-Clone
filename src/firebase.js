@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc , query, where, getDocs} from "firebase/firestore";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyB4lJKTDljcFUCBJai517R2tWJX2LoTe_I",
@@ -24,8 +25,7 @@ const login = (email, password) => {
     // ...
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    console.log(error)
   });
   };
 
@@ -34,7 +34,7 @@ const login = (email, password) => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    db.collection("users").add({
+    const docRef = addDoc(collection(db, "users"), {
       uid: user.uid,
       name,
       authProvider: "local",
@@ -42,32 +42,27 @@ const login = (email, password) => {
     });
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
+    console.log(error)
   });
 }
 
-  // const registerWithEmailAndPassword = async (name, email, password) => {
-  //   try {
-  //     const res = await auth.createUserWithEmailAndPassword(email, password);
-  //     const user = res.user;
-  //     await db.collection("users").add({
-  //       uid: user.uid,
-  //       name,
-  //       authProvider: "local",
-  //       email,
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //     alert(err.message);
-  //   }
-  // };
-
- 
-
   const logout = () => {
     auth.signOut();
+  };
+
+  const fetchUserName = async (user) => {
+    try {
+      let name = ''
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const querySnap = await getDocs(q);
+      querySnap.forEach((doc) => {
+       name =  doc.data().name
+      })
+      return name
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    }
   };
 
   export {
@@ -75,5 +70,6 @@ const login = (email, password) => {
     db,
     login,
     logout,
-    createUser
+    createUser,
+    fetchUserName
   };
