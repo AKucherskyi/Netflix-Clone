@@ -19,11 +19,12 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history.replace("/dashboard");
+    if (user) history.replace("/home");
   }, [user, loading]);
   return (
     <div className="register">
       <div className="register__container">
+        <h1>Register</h1>
         <input
           type="text"
           className="register__textBox"

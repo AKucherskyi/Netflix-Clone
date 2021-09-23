@@ -1,30 +1,23 @@
-.dashboard {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .dashboard__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #dcdcdc;
-    padding: 30px;
-  }
+
 
 .logout {
     width: 15%;
     display: flex;
     color: antiquewhite;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-around;
+    position: fixed;
+    right: 20px;
+}
+
+.logout p {
+  text-align: center;
 }
 
   .logout__btn {
     padding: 15px;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 5px;
     border: none;
     color: white;
     border-radius: 2px;
@@ -32,31 +25,38 @@
   }
 
   .logout__btn:hover {
-    background-color: #d34148
+    background-color: #d34148;
+    transition: all 0.2s;
   }
   
-  .dashboard div {
-    margin-top: 7px;
-  }
+
 
   .header {
       height: 100px;
-      background-color: #0f0c0c;
+      width: 100%;
       display: flex;
       align-items: center;
+      position: fixed;
+      transition-timing-function: ease-in;
+      transition: all 0.5s;
+  }
+
+  .header__black {
+    background-color: rgb(24, 20, 20);
+    z-index: 2;
   }
 
   .logo {
       height: 50px;
+      position: fixed;
+      left: 30px;
   }
 
-  .container {
-      width: 85%;
-      margin: 0 auto;
-  }
 
   .nav {
+    position: fixed;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: rgb(24, 20, 20);
   }

@@ -10,6 +10,20 @@ function Header() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const history = useHistory();
+  const [show, handleShow] = useState(false)
+
+  const transitionNavBar = () => {
+    if (window.scrollY > 100) {
+      handleShow(true)
+    } else {
+      handleShow(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", transitionNavBar)
+    return () => window.removeEventListener("scroll", transitionNavBar)
+  }, [])
   
   useEffect(() => {
     if (loading) return;
@@ -20,18 +34,16 @@ function Header() {
 
   return (
     <div>
-      <header className="header">
-        <div className="container">
+      <header className={`header ${show && 'header__black'}`}>
             <nav className='nav'>
                 <img src={logo} className="logo"></img>
                 <div className='logout'>
-                    <div>{name}</div>
+                    <p>Welcome <br/> {name}</p>
                     <button className="logout__btn" onClick={logout}>
-            Logout
-          </button>
+                    Logout
+                    </button>
                 </div>
             </nav>
-        </div>
       </header>
     </div>
   );

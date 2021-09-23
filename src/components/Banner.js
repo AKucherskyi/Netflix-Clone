@@ -5,8 +5,9 @@ function Banner() {
 
     const [show, setShow] = useState({})
 
-    const fetchShow = async () => {
-        const id = Math.ceil(Math.random() * 50)
+    const fetchRandomShow = async () => {
+        try {
+        const id = Math.ceil(Math.random() * 100)
         let res = await fetch(`https://api.tvmaze.com/shows/${id}`)
         let data = await res.json()
         res = await fetch(`https://api.tvmaze.com/shows/${id}/images`)
@@ -14,12 +15,17 @@ function Banner() {
         dataBackground = dataBackground.filter((item) => item.type == 'background')
         const background = dataBackground[0].resolutions.original.url
         data['background'] = background
-        console.log(data)
         setShow(data)
+        return res;
+        } catch (e) {
+            console.log(e)
+            window.location.reload()
+        }
+        
     }
 
     useEffect(() => {
-        fetchShow()        
+        fetchRandomShow()        
     }, [])
 
     return (
