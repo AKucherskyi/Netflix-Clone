@@ -1,14 +1,18 @@
-import Banner from "./Banner";
-import Header from "./Header";
-import Row from "./Row";
-import movies from "../movies"
-import Footer from "./Footer";
+import Banner from "../Banner";
+import Header from "../Header";
+import Row from "../Row";
+import movies from "../../movies"
+import Footer from "../Footer";
+import { useHistory } from "react-router";
+import Search from "../Search";
 
 function HomeScreen() {
+  const history = useHistory()
   
   return (
     <div>
-      <Header />
+      <Header buttonName="Profile" handleButton={() => history.push('/profile')}/>
+      <Search />
       <Banner />
       <Row title='NETFLIX ORIGINALS' fetchMovies={movies.fetchFirstTenMovies} biggerSize/>
       <Row title='Top rated' fetchMovies={movies.fetchTopRated} />

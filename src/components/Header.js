@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router";
 import "./Header.css";
-import { auth, logout, fetchUserName } from "../firebase";
+import { auth, fetchUser } from "../firebase";
 import logo from '../img/logo.svg'
 
 
-function Header() {
+function Header({buttonName, handleButton}) {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const history = useHistory();
@@ -27,20 +27,24 @@ function Header() {
   
   useEffect(() => {
     if (loading) return;
-    if (!user) return history.replace("/");
-    fetchUserName(user)
-    .then((name) => setName(name))
+    if (!user) return history.replace("/login");
+    fetchUser(user)
+    .then((user) => setName(user?.name))
   }, [user, loading]);
 
   return (
     <div>
       <header className={`header ${show && 'header__black'}`}>
             <nav className='nav'>
-                <img src={logo} className="logo"></img>
+                <img 
+                src={logo} 
+                className="logo" 
+                onClick={() => {history.push("/")}}
+                />
                 <div className='logout'>
                     <p>Welcome <br/> {name}</p>
-                    <button className="logout__btn" onClick={logout}>
-                    Logout
+                    <button className="profile__btn" onClick={handleButton}>
+                    {buttonName}
                     </button>
                 </div>
             </nav>

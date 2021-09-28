@@ -5,6 +5,7 @@ import {
   auth,
   createUser,
 } from "../firebase";
+import Header from "./Header";
 import "./Register.css";
 
 function Register() {
@@ -19,38 +20,41 @@ function Register() {
   };
   useEffect(() => {
     if (loading) return;
-    if (user) history.replace("/home");
+    if (user) history.replace("/");
   }, [user, loading]);
   return (
-    <div className="register">
-      <div className="register__container">
-        <h1>Register</h1>
-        <input
-          type="text"
-          className="register__textBox"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
-        />
-        <input
-          type="text"
-          className="register__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="register__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button className="register__btn" onClick={register}>
-          Register
-        </button>
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
+    <div>
+      {/* <Header buttonName="Login" handleButton={() => history.push("/login")} /> */}
+      <div className="register">
+        <div className="register__container">
+          <h1>Register</h1>
+          <input
+            type="text"
+            className="register__textBox"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+          />
+          <input
+            type="text"
+            className="register__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="register__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button className="register__btn" onClick={register}>
+            Register
+          </button>
+          <div>
+            Already have an account? <Link to="/">Login</Link> now.
+          </div>
         </div>
       </div>
     </div>

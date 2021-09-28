@@ -1,0 +1,54 @@
+.movieScreen {
+    color: white;
+    background-color: #444455;
+}
+
+.movieScreen__container p {
+    margin-top: 1px;
+    font-size: 1.1rem;
+}
+
+.movieScreen h1 {
+    font-size: 3rem;
+    font-weight: normal;
+}
+
+.movieScreen__container {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 150px;
+    margin-bottom: 150px;
+}
+
+.movieScreen__poster {
+    max-height: 500px;
+    margin-right: 40px;
+    margin-left: 5px;
+}
+
+
+.movieScreen__description {
+    display: flex;
+    width: 90%;
+
+}
+
+.movieScreen__button {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    background-color: rgba(51, 51, 51, 0.5);
+    padding-bottom: 0.5rem;
+}
+
+.movieScreen__button:hover {
+    background-color: rgba(130, 130, 130, 0.5);
+}

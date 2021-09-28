@@ -14,17 +14,18 @@
   text-align: center;
 }
 
-  .logout__btn {
+  .profile__btn {
     padding: 15px;
-    font-size: 18px;
+    font-size: 14px;
     margin-top: 5px;
     border: none;
     color: white;
     border-radius: 2px;
-    background-color: #e50914
+    background-color: #e50914;
+    cursor: pointer;
   }
 
-  .logout__btn:hover {
+  .profile__btn:hover {
     background-color: #d34148;
     transition: all 0.2s;
   }
@@ -50,6 +51,7 @@
       height: 50px;
       position: fixed;
       left: 30px;
+      cursor: pointer;
   }
 
 

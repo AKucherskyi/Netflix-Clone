@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "firebase/auth";
-import { getFirestore, collection, addDoc , query, where, getDocs} from "firebase/firestore";
+import { getFirestore, getDoc, getDocs, setDoc, doc, collection, query, orderBy, updateDoc, increment} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -20,29 +20,30 @@ const db = getFirestore();
 const login = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
+    console.log(userCredential)
   })
   .catch((error) => {
-    console.log(error)
+    alert(error.message)
   });
   };
 
   const createUser = (name, email, password) => {
     createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed in 
     const user = userCredential.user;
-    const docRef = addDoc(collection(db, "users"), {
+    setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       name,
       authProvider: "local",
       email,
+      liked: [],
+      favorites: [],
+      friends:[]
+
     });
   })
   .catch((error) => {
-    console.log(error)
+    console.log(error.message)
   });
 }
 
@@ -50,20 +51,21 @@ const login = (email, password) => {
     auth.signOut();
   };
 
-  const fetchUserName = async (user) => {
+  const fetchUser = async (user) => {
     try {
-      let name = ''
-      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-      const querySnap = await getDocs(q);
-      querySnap.forEach((doc) => {
-       name =  doc.data().name
-      })
-      return name
+     const userSnap = await getDoc(doc(db, "users" , user?.uid))
+     return userSnap.data()
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     }
   };
+
+  const getLikes = async (id) => {
+    const likes = await getDoc(doc(db, "movies", id.toString()))
+    return likes.data().likes
+  }
+
 
   export {
     auth,
@@ -71,5 +73,6 @@ const login = (email, password) => {
     login,
     logout,
     createUser,
-    fetchUserName
+    fetchUser,
+    getLikes,
   };
