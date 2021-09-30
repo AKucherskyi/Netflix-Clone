@@ -1,0 +1,34 @@
+.searchScreen {
+    color: white;
+    background: rgb(174,200,238);
+    background: linear-gradient(180deg, rgb(37, 33, 33) 0%, rgba(0,0,0,1) 100%);
+}
+
+.searchScreen__results {
+    width: 85%;
+    padding-top: 150px;
+    margin: 0 auto;
+    
+
+}
+
+.searchScreen__result {
+    margin-top: 30px;
+    display: flex;
+}
+
+.searchScreen__result:hover {
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.searchScreen__img {
+    max-height: 300px;
+    
+}
+
+.searchScreen__summary {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}

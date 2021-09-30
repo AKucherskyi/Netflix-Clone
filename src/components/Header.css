@@ -1,0 +1,64 @@
+
+
+.logout {
+    width: 15%;
+    display: flex;
+    color: antiquewhite;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    right: 20px;
+}
+
+.logout p {
+  text-align: center;
+}
+
+  .profile__btn {
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 5px;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    background-color: #e50914;
+    cursor: pointer;
+  }
+
+  .profile__btn:hover {
+    background-color: #d34148;
+    transition: all 0.2s;
+  }
+  
+
+
+  .header {
+      height: 100px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      transition-timing-function: ease-in;
+      transition: all 0.5s;
+  }
+
+  .header__black {
+    background-color: rgb(24, 20, 20);
+    z-index: 2;
+  }
+
+  .logo {
+      height: 50px;
+      position: fixed;
+      left: 30px;
+      cursor: pointer;
+  }
+
+
+  .nav {
+    position: fixed;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(24, 20, 20);
+  }
