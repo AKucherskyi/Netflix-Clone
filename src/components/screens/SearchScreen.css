@@ -1,7 +1,7 @@
 .searchScreen {
     color: white;
     background: rgb(174,200,238);
-    background: linear-gradient(180deg, rgb(167, 167, 167) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgb(37, 33, 33) 0%, rgba(0,0,0,1) 100%);
 }
 
 .searchScreen__results {

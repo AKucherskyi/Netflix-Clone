@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Login.css";
-import { auth, login } from "../firebase.js";
-import Header from "./Header";
+import "./LoginScreen.css";
+import { auth, login } from "../../firebase.js";
+import Header from "../Header";
 
 function Login() {
   const [email, setEmail] = useState("");

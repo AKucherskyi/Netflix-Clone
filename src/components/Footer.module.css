@@ -23,6 +23,7 @@
 .footer__block {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer__block p:hover {

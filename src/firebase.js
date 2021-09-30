@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "firebase/auth";
-import { getFirestore, getDoc, getDocs, setDoc, doc, collection, query, orderBy, updateDoc, increment} from "firebase/firestore";
+import { getFirestore, getDoc, setDoc, doc, updateDoc, increment} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -43,7 +43,7 @@ const login = (email, password) => {
     });
   })
   .catch((error) => {
-    console.log(error.message)
+    alert(error.message)
   });
 }
 
@@ -62,10 +62,37 @@ const login = (email, password) => {
   };
 
   const getLikes = async (id) => {
-    const likes = await getDoc(doc(db, "movies", id.toString()))
-    return likes.data().likes
+    const likes = await getDoc(doc(db, "movies", id.toString()));
+    if (!likes.data()) {
+      const setLikes = Math.ceil(Math.random() * 1000);
+      await setDoc(doc(db, "movies", id.toString()), {
+        id: parseInt(id),
+        likes: setLikes,
+      });
+      return setLikes;
+    }
+    return likes.data()?.likes;
+  };
+
+  const incLikes = async (id) => {
+    const movieRef = doc(db, "movies", id.toString())
+    await updateDoc(movieRef, {
+      likes : increment(1)
+    })
+    console.log('+')
   }
 
+  const decLikes = async (id) => {
+    const movieRef = doc(db, "movies", id.toString())
+    await updateDoc(movieRef, {
+      likes : increment(-1)
+    })
+  }
+  
+  const updateUser = async (uid, obj) => {
+    const userRef = doc(db, "users", uid)
+    await updateDoc(userRef, obj);
+  }
 
   export {
     auth,
@@ -75,4 +102,7 @@ const login = (email, password) => {
     createUser,
     fetchUser,
     getLikes,
+    updateUser,
+    incLikes,
+    decLikes
   };

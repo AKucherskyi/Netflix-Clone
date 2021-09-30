@@ -4,6 +4,18 @@
 }
 
 .favorites {
-    padding-top: 300px;
+    padding-top: 200px;
+    padding-left: 100px;
     color: white;
+}
+
+select {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding: 0.2rem;
+    background-color: rgba(51, 51, 51, 0.5);
 }

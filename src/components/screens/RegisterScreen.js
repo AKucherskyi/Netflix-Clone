@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useHistory } from "react-router-dom";
-import {
-  auth,
-  createUser,
-} from "../firebase";
-import Header from "./Header";
-import "./Register.css";
+import { auth,createUser,} from "../../firebase";
+import "./RegisterScreen.css";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const history = useHistory();
+  
   const register = () => {
     if (!name) alert("Please enter name");
     createUser( name, email, password);
   };
+
   useEffect(() => {
     if (loading) return;
     if (user) history.replace("/");
   }, [user, loading]);
+
   return (
     <div>
-      {/* <Header buttonName="Login" handleButton={() => history.push("/login")} /> */}
       <div className="register">
         <div className="register__container">
           <h1>Register</h1>

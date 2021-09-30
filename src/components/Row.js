@@ -18,7 +18,7 @@ useEffect(() => {
         <h2>{title}</h2>
         <div className="row__posters">
           {movies.map((movie) => (
-            <div className="row__poster">
+            <div className="row__poster" key={movie.id + 1000}>
             <img
              key={movie.id}
              className="row__posterImg"
@@ -27,7 +27,7 @@ useEffect(() => {
              alt={movie.name}
              onClick = {() => {history.push(`/movie/${movie.id}`)}} 
             />
-            {/* <Likes id ={movie.id} /> */}
+            <Likes id ={movie.id} />
             </div>
             
           ))}

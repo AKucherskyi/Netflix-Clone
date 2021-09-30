@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from './components/Login';
-import Register from './components/Register'
+import Login from './components/screens/LoginSrceen';
+import Register from './components/screens/RegisterScreen'
 import HomeScreen from './components/screens/HomeScreen';
 import ProfileScreen from './components/screens/ProfileScreen';
 import MovieScreen from './components/screens/MovieScreen';
