@@ -1,5 +1,5 @@
 # DEPLOYED APP :
-**[View deployed app](https://netflix-like-app-cd98d.web.app/)**
+**[https://netflix-like-app-cd98d.firebaseapp.com/](https://netflix-like-app-cd98d.firebaseapp.com/)**
 
 # Getting Started with Create React App
 
