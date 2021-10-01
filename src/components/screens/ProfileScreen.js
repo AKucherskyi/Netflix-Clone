@@ -20,7 +20,6 @@ function ProfileScreen() {
         data.forEach(async (movie) => {
             movie.likes =await getLikes(movie.id)
         })
-        console.log(data)
         setMovies(data)
     }
 
@@ -75,18 +74,26 @@ useEffect(() => {
     return (
       <div className="profileScreen">
         <Header buttonName="Logout" handleButton={logout} />
+
         <div className="favorites">
-          <h2>Favorites</h2>
-          <span>Sort by: </span>
-          <select
-            value={sortBy}
-            onChange={({ target }) => setSortBy(target.value)}
-          >
-            <option value="name">Name</option>
-            <option value="rating">Rating</option>
-            <option value="likes">Likes</option>
-            <option value="premiere_date">Premiere date</option>
-          </select>
+          {movies.length === 0 ? (
+            <h2>No favorites</h2>
+          ) : (
+            <>
+              <h2>Favorites</h2>
+              <span>Sort by: </span>
+              <select
+                value={sortBy}
+                onChange={({ target }) => setSortBy(target.value)}
+              >
+                <option value="name">Name</option>
+                <option value="rating">Rating</option>
+                <option value="likes">Likes</option>
+                <option value="premiere_date">Premiere date</option>
+              </select>
+            </>
+          )}
+
           <div className="row__posters">
             {movies.map((movie) => (
               <div className="row__poster" key={movie.id + 1000}>

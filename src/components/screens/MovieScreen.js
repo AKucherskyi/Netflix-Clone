@@ -62,7 +62,8 @@ function MovieScreen({match : {params: {id}}}) {
           setFavorite(true);
         }
       });
-      getLikes(id).then((likes) => setLikes(likes));
+      getLikes(id)
+      .then((likes) => setLikes(likes));
     }, [user]);
  
     return (
@@ -92,7 +93,7 @@ function MovieScreen({match : {params: {id}}}) {
                 <h4>Genres:</h4>
                 <div>
                   {movie.genres?.map((genre) => (
-                    <span>
+                    <span key={genre}>
                       {" "}
                       {genre} <br />{" "}
                     </span>

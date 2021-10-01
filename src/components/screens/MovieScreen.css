@@ -1,6 +1,6 @@
 .movieScreen {
     color: white;
-    background-color: #444455;
+    background-image: url(../../img/bg-dark-4780.jpg);
 }
 
 .movieScreen__container p {
