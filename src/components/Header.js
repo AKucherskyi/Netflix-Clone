@@ -9,6 +9,7 @@ import logo from '../img/logo.svg'
 function Header({buttonName, handleButton}) {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("")
   const history = useHistory();
   const [show, handleShow] = useState(false)
 
@@ -29,11 +30,13 @@ function Header({buttonName, handleButton}) {
     if (loading) return;
     if (!user) return history.replace("/login");
     fetchUser(user)
-    .then((user) => setName(user?.name))
-  }, [user, loading]);
+    .then((user) => {
+      setName(user.name)
+      setEmail(user.email)
+    })
+  }, [user]);
 
   return (
-    <div>
       <header className={`header ${show && 'header__black'}`}>
             <nav className='nav'>
                 <img 
@@ -42,14 +45,13 @@ function Header({buttonName, handleButton}) {
                 onClick={() => {history.push("/")}}
                 />
                 <div className='logout'>
-                    <p>Welcome <br/> {name}</p>
+                    <p>{name} <br/> {email}</p>
                     <button className="profile__btn" onClick={handleButton}>
                     {buttonName}
                     </button>
                 </div>
             </nav>
       </header>
-    </div>
   );
 }
 export default Header;

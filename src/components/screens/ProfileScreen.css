@@ -1,6 +1,5 @@
 .profileScreen {
-    background: rgb(174,200,238);
-    background: linear-gradient(180deg, rgba(174,200,238,1) 0%, rgba(0,0,0,1) 100%);
+    background-image: url(../../img/bg-dark-4780.jpg);
 }
 
 .favorites {
